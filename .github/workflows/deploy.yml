@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Delay to avoid overlapping deploys
-        run: sleep 120
+        run: sleep 50
 
       - name: Trigger Render Deployment
         run: |
