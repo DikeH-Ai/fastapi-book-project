@@ -11,4 +11,4 @@ jobs:
 
       - name: Trigger Render Deployment
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-cult1da3esus73b3enk0?key=jH7Z_69dKDc"
+          curl -X POST "https://api.render.com/deploy/srv-cult1da3esus73b3enk0?key=6mtXVxPri4g"
