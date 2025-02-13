@@ -1,14 +1,19 @@
-name: Deploy to Render
+name: Deploy to EC2
 on:
   push:
     branches: [main]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Delay to avoid overlapping deploys
-        run: sleep 50
-
-      - name: Trigger Render Deployment
-        run: |
-          curl -X POST "https://api.render.com/deploy/srv-cult1da3esus73b3enk0?key=6mtXVxPri4g"
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_IP }}
+          username: ubuntu
+          key: ${{ secrets.SSH_KEY }}
+          script: |
+            cd /var/www/fastapi-book-project
+            git pull origin main
+            sudo systemctl restart fastapi
